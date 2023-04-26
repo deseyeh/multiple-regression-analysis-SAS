@@ -32,9 +32,6 @@ run;
 quit;
 
 
-
-*2. Question 
-
 *	Below code Creates dummy variable for factor c1
 ;
 data pfarg06_v2;
@@ -74,7 +71,7 @@ title;
 
 
 
-*Question 3
+*
 consider the regression of log(Y) on the respective 
 logs of A1 and Per2 to Per7, 
 and on the (untransformed) factors C1 to C3, and C5 to C8.
@@ -134,7 +131,7 @@ run;
 title;
 
 
-*Question 4
+*
 Employ a backward elimination procedure to the model in Q3
 
 ;
@@ -145,7 +142,7 @@ model  Ly = c1 - c3 c5 - c8 La1 Lper2 - Lper7
 run;
 quit;
 
-*Question 5
+*
 Fit the Model
 
 ;
@@ -187,7 +184,7 @@ title;
 
 
 
-*Question 6
+*
 Investigating Outliers and influential points
 ;
 /* using Proc GLM with class;
@@ -275,7 +272,7 @@ model  Ly = c1_1 c1_2 c1_3 c2 La1 Lper2 Lper3 / vif;
 run;
 quit;
 
-* Q 7
+* 
 95% confidence interval
 ;
 proc reg data = pfarg06_v2 noprint;
