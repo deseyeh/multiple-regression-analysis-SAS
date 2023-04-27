@@ -4,9 +4,40 @@
 
 Investigating the administrative costs of pension funds, evaluating the size, schemes, administrative complexity of  the funds and Critically  provide recommendation metrics on how to enhance the administrative effectiveness of the pension plans.
 
+PENSION FUND ADMINISTRATIVE COSTS
+ 
+THE DATA SET
+
+The data were collected by PFARG (the Pension Fund Accountants Research Group) in the 1980's, via a questionnaire circulated to pension fund managers and related to the preceding financial year. PFARG's aim was to investigate the administrative costs of pension funds, and to relate these costs to measures of the size, turnover and administrative complexity of the funds. PFARG set up a number of pre-requisites for considering a fund eligible for analysis (for example, funds with a large overseas sector, or with important variables missing from their returns were excluded) and this reduced the number of funds to be investigated to 45.
+
+
+A subset of the variables of interest, covering administrative costs, size and turnover have been abstracted from the full data set and stored in the permanent SAS Data Set Pfarg06. 
+
 ![image](https://user-images.githubusercontent.com/100138272/234721488-a2726897-bb3d-4497-97f4-b99832d1eb30.png)
 
-## EXPLORATORY ANALYSIS OF  VARIABLES Y, A1 AND PER2 TO PER 7
+Active members are members currently working and paying into the fund.
+
+Deferred pensioners are ex-members, still working, now paying into some other pension fund, but still entitled to draw a pension from the current fund on retirement.
+
+Pensioners are ex-members, now retired, and drawing a pension from the fund.
+
+Starters are new members who began paying into the fund in the preceding financial year.
+
+Leavers are members who left the fund in the preceding financial year (and thus became deferred pensioners).
+
+New pensioners are ex-members who retired and began drawing a pension from the fund in the preceding financial year.
+
+Cessations are pensioners who died in the preceding financial year.
+
+Thus A1, A2 and A3 are all measures of the current size of the fund. A4, A5, A6 and A7 are all measures of the current turnover of the fund (but are also clearly size related).
+
+C1 - C8 all reflect the administrative complexity of the fund.
+
+Note that AVC's are "additional voluntary contributions".
+
+
+
+# EXPLORATORY ANALYSIS OF  VARIABLES Y, A1 AND PER2 TO PER 7
 
 We begin with the exploratory analysis of the variables and investigating any missing values 
 
@@ -20,7 +51,7 @@ Based on the histogram in figure 1.1, the distribution of Y appears to near no
 
 ![image](https://user-images.githubusercontent.com/100138272/234721780-8089e1c6-cabd-4024-afb6-41c2f748fbc3.png)
 
-## FREQUENCY DISTRIBUTION OF FACTORS C1 TO C8
+# FREQUENCY DISTRIBUTION OF FACTORS C1 TO C8
 
 Then, we deep down to analyze each of the factors, to remove non-significant factor based on frequency 
 
@@ -30,7 +61,7 @@ From the frequency distribution Table 1.2, there is very large variation in the 
 
 As a result, this variable is unlikely to have a significant relationship with Y and may be more appropriate not to include it as an explanatory variable in any regression model for Y. It may not improve the accuracy of the predictions due to its low variability
 
-## INVESTIGATING THE RELATIONSHIP BETWEEN TOTAL COST PER ACTIVE MEMBER AND MEASURES, TURN OVER AND SCHEMES.
+# INVESTIGATING THE RELATIONSHIP BETWEEN TOTAL COST PER ACTIVE MEMBER AND MEASURES, TURN OVER AND SCHEMES.
 
 To investigate the relationship between the target and the explanatory variables, we plot a scatterplot  and investigate the analysis of variance.
 ![image](https://user-images.githubusercontent.com/100138272/234722149-73547213-0cf1-4fe2-969c-cf863d22fd98.png)
@@ -41,7 +72,8 @@ In the scatterplot of Figure 2.1, the target variable Y generally increases with
 
 In Table 2.1,  F-test is significant with p-value - P0 = 0.0189. Since P0 < 0.05, the obtained result is significant at the 5% level. Also, the R2 58% of the variation is being explained by the model. Hence, the multiple regression is “worthwhile”, and we can continue with the investigation and interpretation of the fitted regression model. 
 
-## TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
+# TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
+
 ![image](https://user-images.githubusercontent.com/100138272/234722379-2a095e62-b5e4-4380-9217-e00793919956.png)
 
 To investigate the tenability, a studentized residuals plot (Figure 2.2) appears to be randomly scattered about a mean value of zero, with approximately constant range (hence variance) across the entire range of fitted values. The plot is therefore consistent with the adequacy of the systematic component of the multiple regression model, and with the assumption of constant variance. (Homoscedasticity)
@@ -55,7 +87,7 @@ Figure 2.4,  The studentised residuals conform nearly to an approximate stra
 
 ## In conclusion, to achieve a suitable model, it will be appropriate to further investigate or transform the data to resolve the issues of non-linearity and irregularities on plots. 
 
-## TRANSFORMATION OF THE INITIAL MODEL, USING LOG 
+# TRANSFORMATION OF THE INITIAL MODEL, USING LOG 
 
 LY = Log(Y), LA1 = Log(A1),  LPer2 = Log(LPer2),  … , LPer7 = Log(LPer7)
 
@@ -70,7 +102,7 @@ These variables do not require transformation because they are not measured on 
 
 Categorical variables are not subject to the same statistical assumptions as continuous variables, such as normality, linearity, and homoscedasticity, which may require transformations.
 
-## FITTING THE TRANSFORMED MODEL
+# FITTING THE TRANSFORMED MODEL
 
 ![image](https://user-images.githubusercontent.com/100138272/234722886-ac42e908-6cd2-487b-8235-d679cfca64b3.png)
 
@@ -84,7 +116,7 @@ This is sufficiently high to indicate that the multiple regression model may pr
 
 Hence, the multiple regression is “worthwhile”, and we can continue with the investigation and interpretation of the fitted regression model. 
 
-## TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
+# TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
 
 ![image](https://user-images.githubusercontent.com/100138272/234723054-3315c98d-275f-40d3-a9bf-aee6e08d79a6.png)
 
@@ -102,7 +134,7 @@ Figure 3.4,  The studentized residuals appear to be randomly scattered ab
 
 From Table 3.2  We can conclude that there is  significant different between the initially fitted model and the model upon Transformed with Log. The Transformed model is a better fit compared to the initial model. However, to achieve a best model we will proceed to reduce the model to a parsimonious model . 
 
-## MODEL SELECTION TO ACHIEVE BEST FIT ON TRANSFORMED MODEL
+# MODEL SELECTION TO ACHIEVE BEST FIT ON TRANSFORMED MODEL
 
 Approaches based on considering all possible models are impractical in removing unnecessary variables in this instance because there are many potential explanatory variables and the number of possible models will be 2k – 1, where k is the total number of potential variable. In this instance where K = 14 potential explanatory variable, this will generate over 16,000 possible models. This approach is only practicable with modest number of potential explanatory variables.
 
@@ -120,7 +152,7 @@ From all ten models fitted, we note from the output the number of explanatory va
 
 The error mean square remains stable (at around 0.08) for all the models fitted. When the model is reduced to only k = 5 explanatory variable, S2 increases slightly, but there is no clear jump in values. The final model with k = 5 explanatory variables is not marked poorer than the preceding models, despite the exclusion of the marginally non-significant variable C3. Additionally, all the remaining variables in the final model had a p-value of less than 0.05, indicating that they are significantly related to the response variable. Also, k =5 remains the most parsimonious model to choose. 
 
-## Final Model
+# Final Model
 
 The final model will describe and predict the Logged target variable LY (Total cost per active member with the Logged explanatory variables, LA1, C1, C2, LPer2 and LPer3.
 
@@ -132,7 +164,7 @@ Where LY is the natural logarithm of the total cost per active member.
 
 ![image](https://user-images.githubusercontent.com/100138272/234724090-38c7cfa2-dcf4-495e-9576-2dead0cf7ba5.png)
 
-## PARAMETER ESTIMATES 
+# PARAMETER ESTIMATES 
 
 ![image](https://user-images.githubusercontent.com/100138272/234724352-17a3a9f7-3579-4d33-9db8-4a623dc97e9b.png)
 
@@ -159,7 +191,7 @@ For every change in the number of deferred pensioners per active member the
 
 The total cost per active member will increase by 0.328 value of the number of pensioners per active member (LPer3)
 
-## FITTING THE FINAL MODEL 
+# FITTING THE FINAL MODEL 
 
 ![image](https://user-images.githubusercontent.com/100138272/234725133-99c1321e-6041-4877-8e6d-fd5081c661eb.png)
 
@@ -173,7 +205,7 @@ The F test remains significant since the p-value are much smaller at p0 = < .00
 
 We will also plot appropriate plots to investigate the fit of our final model.
 
-## TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
+# TENABILITY OF THE STATISTIC ASSUMPTION OF THE MODEL
 
 ![image](https://user-images.githubusercontent.com/100138272/234725202-9d01ca3d-cd0d-41fd-9023-3874f0b2a2f6.png)
 
@@ -199,7 +231,7 @@ Based on the Histogram, there is a suggestion that the residual is approximately
 
 From the above plot, the studentized residuals indeed conform nearer to an approximate straight line of unit slope passing near to the origin on this normal. Also, plot shows that the residuals follow the line closely, suggesting that the normality assumption of the random errors  is tenable.
 
-## OUTLIERS
+# OUTLIERS
 
 From the previous studentized residual plot, normal probability plot, there is clearly no identified outlier. However, We investigate further for any potential outliers and potential influential by investigating the deleted residuals: an overlaid scatter diagram of the studentized and deleted residual against the fitted values (Figure 6.1 ) below
 
@@ -279,7 +311,7 @@ Observation 4 has a slightly above average leverage H and a large deleted residu
 Observation 5, and 6  has a significantly above average leverage and a moderately large deleted residual. Its covariance ratio C is well above the higher limits, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
 
 
-## INVESTIGATING MULTICOLLINEARITY IN THE MODEL
+# INVESTIGATING MULTICOLLINEARITY IN THE MODEL
 
 We proceed to use Using sample correlation and VIF to investigate potential collinearities between the possible explanatory variables.
 
@@ -291,7 +323,7 @@ Correlations in Table 6.6  are too low to be of much interest. Amongst the highe
 
 From Table 6.6, No VIF even approaches the cut-off value of 10, so that none of the potential explanatory variables can be particularly well predicted by its fellow explanatory variables. At this stage, there is little evidence to suggest that important collinearities exist amongst the potential explanatory variables for this regression problem.
 
-## POINT OF INTEREST ON CORRESPONDING CONFIDENCE INTERVAL 
+# POINT OF INTEREST ON CORRESPONDING CONFIDENCE INTERVAL 
 
 The predicted cost per active member and the corresponding confidence interval obtained from the final model would be of great interest to the pension fund managers as it can help them to compare the administrative efficiency of various schemes. 
 
@@ -303,7 +335,7 @@ In this case, the confidence interval for a predicted observation is more approp
 
 The confidence interval for the fitted mean provides an interval estimate for the average cost per active member across all schemes. Since the goal is to provide information on each individual scheme, the confidence interval for a predicted observation is more relevant.
 
-RECOMMENDATION: Illustrative use of prediction and confidence interval
+# RECOMMENDATION: Illustrative use of prediction and confidence interval
 
 ![image](https://user-images.githubusercontent.com/100138272/234726578-57c8c05d-f231-46de-9d11-9f2b0bd073ad.png)
 
@@ -317,7 +349,7 @@ This indicates that this observation may have a larger influence on the model th
 
 It is recommended that the pension fund manager exercises caution when using the predicted cost per active member and associated confidence intervals for Observation 
 
-## SUMMARY
+# SUMMARY
 
 In this investigation, a multiple regression model was fitted to a dataset consisting of schemes for providing pensions to employees. The response variable of interest was the total cost per active member, while several predictor variables were considered.
 
