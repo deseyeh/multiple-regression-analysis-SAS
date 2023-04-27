@@ -227,8 +227,6 @@ An absolute DFFITS value of 2 or more would be convincing evidence of an influen
 Figure 6.2 is a Pareto graph of the absolute DFFITS values that clearly shows only the two leftmost points on the graph stand out. However, the leftmost 6 points all have an absolute DFFITS value above the size-related cut-off, although no value exceeds the overall cut-off of 2. We have only marginal evidence that these 6 points may be influential. 
 We further investigate all 6 of these observations in Table 6.2.
 
-![image](https://user-images.githubusercontent.com/100138272/234725980-86e92550-47bc-47b3-be38-18d1d93fad11.png)
-
 ![image](https://user-images.githubusercontent.com/100138272/234726038-fac94449-2e52-4697-b99c-f5313fba0e03.png)
 
 Figure 6.2 is a Pareto graph of the absolute DFFITS values that clearly shows only the two leftmost points on the graph stand out. However, the leftmost 6 points all have an absolute DFFITS value above the size-related cut-off, although no value exceeds the overall cut-off of 2. We have only marginal evidence that these 6 points may be influential. 
@@ -240,10 +238,101 @@ Table 6.2 reveals the identity of the 6 potential influential point.
 Looking at their data points location on scattered diagram FIGURE 5.1 of observed against predicted values will be, Neither of these points appears to be any great distance from the reference line. This again suggests that we have only marginal evidence that the points may, in fact, be influential.
 ![image](https://user-images.githubusercontent.com/100138272/234726103-f06b5fe3-83c0-45c7-b4b2-3299d9bbe364.png)
 
-![image](https://user-images.githubusercontent.com/100138272/234726130-ce33cff3-ecd5-4478-b82e-d72d4b4e62eb.png)
 
 Next, we also investigate the DFBETAS to detect parameter estimate that may be affected by the influential point.
 The sample-size related cut-off for DFBETAS is:
+
+![image](https://user-images.githubusercontent.com/100138272/234727465-629f8c29-7965-473b-ad6b-1af22e483b53.png)
+
+![image](https://user-images.githubusercontent.com/100138272/234727452-4071a72e-edb9-4b8c-9395-dd27af1efce2.png)
+
+From Table 6.3, 
+The first observation seems to be influential in its effects on the estimated partial regression parameters for c1_1 and LPer3 due to larger than average leverage H and a large deleted residual.
+The second observation seems to be influential in its effects on the estimated partial regression parameters for c1_1. 
+The third observation seems to be influential in its effects on the estimated partial regression parameters for c1_3, LA1 and LPer3. 
+The fourth observation seems to be influential in its effects on the estimated partial regression parameters for c1_2, c1_3, and C2. 
+The fifth and sixth  observation seems to be influential in its effects on the estimated partial regression parameters for C1 and LPer3.
+However, none of these DBETAS values is particularly close to the absolute cut-off of 2.
+
+Lastly, we investigate the distance between a point of influence and others with leverage H and how an action on an observation affect precision of model fit with COVRATIO
+
+n = 45 and p = 8, the leverage H has:
+
+average value p/n = 8/45 = 0.178 
+
+cut-off value 3p/n = 24/45 = 0.5
+
+whilst the corresponding limits for C (the COVRATIO) are
+
+1±3p/n = 0.5 and 1.5 respectively
+
+![image](https://user-images.githubusercontent.com/100138272/234727154-a4bf59a8-a49d-4a71-8139-82d7a66921de.png)
+
+Observation 1 has a larger than average leverage H and a large deleted residual. Its covariance ratio C is well within the acceptable limits, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
+
+Observation 2 has a larger than average leverage H and a large deleted residual. Its covariance ratio C is well within the acceptable limits, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
+
+Observation 3 has a lower-than-average leverage H and a large deleted residual. Its covariance ratio C is below the lower limit, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
+
+Observation 4 has a slightly above average leverage H and a large deleted residual. Its covariance ratio C is well within the acceptable limits, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
+
+Observation 5, and 6  has a significantly above average leverage and a moderately large deleted residual. Its covariance ratio C is well above the higher limits, indicating that the inclusion of this observation slightly reduces the precision of the fitted multiple regression equation. On further investigation, this observation causes little concern.
+
+
+## INVESTIGATING MULTICOLLINEARITY IN THE MODEL
+
+We proceed to use Using sample correlation and VIF to investigate potential collinearities between the possible explanatory variables.
+
+![image](https://user-images.githubusercontent.com/100138272/234726942-6a170b9c-540a-4e1f-8eb2-7ba6a5d162b6.png)
+
+Correlations in Table 6.6  are too low to be of much interest. Amongst the higher absolute correlations (that may indicate linear relationships) are those between C1_3 and C1_2 (0.7861). Only LA1 (0.7274) of the explanatory variables have moderately high correlations with the response LY. Hence, we have an indication of the potential effectiveness of LA1 as a predictor of the response.
+
+![image](https://user-images.githubusercontent.com/100138272/234726981-00bfc020-c251-46c6-aa8b-14bee9264d94.png)
+
+From Table 6.6, No VIF even approaches the cut-off value of 10, so that none of the potential explanatory variables can be particularly well predicted by its fellow explanatory variables. At this stage, there is little evidence to suggest that important collinearities exist amongst the potential explanatory variables for this regression problem.
+
+## POINT OF INTEREST ON CORRESPONDING CONFIDENCE INTERVAL 
+
+The predicted cost per active member and the corresponding confidence interval obtained from the final model would be of great interest to the pension fund managers as it can help them to compare the administrative efficiency of various schemes. 
+
+The 95% confidence limit for the observations, with close width of confidence interval, will allow the managers to compare the predicted cost per active member for each scheme and identify those that are performing better or worse in terms of administrative efficiency. 
+
+They can also use this information to identify areas of improvement within each scheme and take appropriate actions to reduce costs.
+
+In this case, the confidence interval for a predicted observation is more appropriate as it provides an interval estimate for the expected cost per active member for a particular scheme. 
+
+The confidence interval for the fitted mean provides an interval estimate for the average cost per active member across all schemes. Since the goal is to provide information on each individual scheme, the confidence interval for a predicted observation is more relevant.
+
+RECOMMENDATION: Illustrative use of prediction and confidence interval
+
+![image](https://user-images.githubusercontent.com/100138272/234726578-57c8c05d-f231-46de-9d11-9f2b0bd073ad.png)
+
+Using observation 5 from Figure 7:1, the predicted total cost per active member for this observation is 3.719, with associated 95% prediction limits of 3.492 to 3.947. However, with a lower-than-average leverage H = 0.152, the model's prediction for this observation is reliable. 
+
+This information can help the manager evaluate the accuracy of the predicted costs and make decisions based on the confidence they have in the model's predictions.
+
+For Observation 6 from Figure 7:1, the predicted total cost per active member is 3.554, with associated 95% prediction limits 3.111 to 3.998. However, with a leverage H = 0.576 is above the cut-off of 0.5, it is by no means certain that these predictions can be relied upon. 
+
+This indicates that this observation may have a larger influence on the model than other observations.  
+
+It is recommended that the pension fund manager exercises caution when using the predicted cost per active member and associated confidence intervals for Observation 
+
+## SUMMARY
+
+In this investigation, a multiple regression model was fitted to a dataset consisting of schemes for providing pensions to employees. The response variable of interest was the total cost per active member, while several predictor variables were considered.
+
+Initially, a multiple regression model was fitted without any transformation of variables. This model showed that some predictor variables were not significant and that the overall fit was not very good. To improve the fit, the predictor variables were transformed using logarithmic functions.
+
+The transformed variables were then used to fit a new multiple regression model. This model showed a better fit and included only significant predictor variables. 
+
+To further simplify the model, a parsimonious model was selected using backward elimination of non-significant predictor variables.
+
+Outliers and influential points were investigated using the studentized and deleted residuals, as well as the leverage and covariance ratio.
+
+While some observations had larger than average leverage and deleted residuals, further investigation showed that these observations did not significantly impact the model.
+
+Overall, the investigation showed that a transformed multiple regression model with selected predictor variables was an appropriate model to predict the total cost per active member for the different pension schemes.
+
 
 
 
